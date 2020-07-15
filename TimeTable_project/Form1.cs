@@ -24,41 +24,13 @@ namespace TimeTable_project
 
         private void seeTimeTableButton_Click(object sender, EventArgs e)
         {
-            String dayName = choiceDayBox.Text;
-            String className = choiceClassBox.Text;
-            String classN = null;
-            String week = null;
+            string dayName = choiceDayBox.Text;
+            string className = choiceClassBox.Text;
+            string classN = null;
+            string week = null;
 
-            if (className.Equals("1반"))
-            {
-                classN = "class1Table";
-            }else if (className.Equals("2반"))
-            {
-                classN = "class2Table";
-            }else if (className.Equals("3반"))
-            {
-                classN = "class3Table";
-            }else if (className.Equals("4반"))
-            {
-                classN = "class4Table";
-            }
-
-            if (dayName.Equals("월요일"))
-            {
-                week = "mon";
-            }else if (dayName.Equals("화요일"))
-            {
-                week = "tue";
-            }else if (dayName.Equals("수요일"))
-            {
-                week = "wed";
-            }else if (dayName.Equals("목요일"))
-            {
-                week = "thu";
-            }else if (dayName.Equals("금요일"))
-            {
-                week = "fri";
-            }
+            classN = whatIsIt_class(className);
+            week = whatIsIt_day(dayName);
 
             //data를 조회해 와서 저장 
             DataSet ds = new DataSet();
@@ -66,11 +38,13 @@ namespace TimeTable_project
             using (SqlConnection conn = new SqlConnection(constr))
             {
                 conn.Open();
-                string sql = "SELECT class as '시간', " + week + " as '" + dayName+"', teacher_Table.teacherName as '선생님', subTable.classPlace as '수업장소', teacher_Table.teacherPlace as '선생님 위치'" 
-                    + " From " + classN 
-                    +" LEFT OUTER JOIN subTable ON "+classN+"."+week+" = subTable.subName"
-                    +" LEFT OUTER JOIN teacher_Table ON "+classN+"."+week+" = teacher_Table.subName"
-                    + ";" ;
+                string sql = "SELECT class as '시간', " + week + " as '" + dayName 
+                    + "', teacher_Table.teacherName as '선생님', subTable.classPlace as '수업장소'," +
+                    " teacher_Table.teacherPlace as '선생님 위치'"
+                    + " From " + classN
+                    + " LEFT OUTER JOIN subTable ON " + classN + "." + week + " = subTable.subName"
+                    + " LEFT OUTER JOIN teacher_Table ON " + classN + "." + week + " = teacher_Table.subName"
+                    + ";";
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
                 adapter.Fill(ds, classN);
             }
@@ -79,7 +53,7 @@ namespace TimeTable_project
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            String dayName = choiceDayBox.Text;
+            string dayName = choiceDayBox.Text;
 
             subName.Text = dataGridView1.Rows[e.RowIndex].Cells[dayName].Value.ToString();
             teacherName.Text = dataGridView1.Rows[e.RowIndex].Cells["선생님"].Value.ToString();
@@ -106,12 +80,71 @@ namespace TimeTable_project
         {
             changeSub.Text = comboBox4.Text;
         }
-
-        private void changeTimeTableButton_Click(object sender, EventArgs e)
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String className = choiceClassBox.Text;
-            String classN = null;
-            String week = null;
+            beforeSub.Text = comboBox5.Text;
+        }
+
+        private void changeTimeTableButton_Click(object sender, EventArgs e) // 수정하기
+        {
+            string className = comboBox1.Text;
+            string dayName = comboBox2.Text;
+            string classN;
+            string week;
+            string beforeSub = comboBox5.Text;
+            string changeSubText = comboBox4.Text;
+            string changeTime = comboBox3.Text;
+
+            classN = whatIsIt_class(className);
+            week = whatIsIt_day(dayName);
+
+            using (SqlConnection conn = new SqlConnection(constr))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = conn;
+
+                command.CommandText // 데이터 내용 수정
+                    = "UPDATE " + classN
+                    + " SET " + week + " = '" + changeSubText + "'"
+                    + " WHERE "+week+" = '" + beforeSub + "';";
+                command.ExecuteNonQuery(); // sql 실행
+                seeChangeTimeTableButton_Click(null, null); // 다시 전체 조회 ㄱ
+            }
+        }
+
+        private void seeChangeTimeTableButton_Click(object sender, EventArgs e)
+        {
+            string dayName = comboBox2.Text;
+            string className = comboBox1.Text;
+            string classN = whatIsIt_class(className);
+            string week = whatIsIt_day(dayName);
+
+            choiceClassBox.SelectedItem = className;
+            choiceClassBox.Text = className;
+            choiceDayBox.SelectedItem = dayName;
+            choiceDayBox.Text = dayName;
+
+            DataSet ds = new DataSet();
+
+            using (SqlConnection conn = new SqlConnection(constr))
+            {
+                conn.Open();
+                string sql = "SELECT class as '시간', " + week + " as '" + dayName + "', teacher_Table.teacherName as '선생님'," +
+                    " subTable.classPlace as '수업장소', teacher_Table.teacherPlace as '선생님 위치'"
+                    + " From " + classN
+                    + " LEFT OUTER JOIN subTable ON " + classN + "." + week + " = subTable.subName"
+                    + " LEFT OUTER JOIN teacher_Table ON " + classN + "." + week + " = teacher_Table.subName"
+                    + ";";
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                adapter.Fill(ds, classN);
+            }
+            dataGridView1.DataSource = ds.Tables[0];
+        }
+
+        private string whatIsIt_class(string className)
+        {
+            string classN=null;
 
             if (className.Equals("1반"))
             {
@@ -129,48 +162,34 @@ namespace TimeTable_project
             {
                 classN = "class4Table";
             }
+            return classN;
+        }
+        private string whatIsIt_day(string dayName)
+        {
+            string week = null;
 
-            if (changeDay.Equals("월요일"))
+            if (dayName.Equals("월요일"))
             {
                 week = "mon";
             }
-            else if (changeDay.Equals("화요일"))
+            else if (dayName.Equals("화요일"))
             {
                 week = "tue";
             }
-            else if (changeDay.Equals("수요일"))
+            else if (dayName.Equals("수요일"))
             {
                 week = "wed";
             }
-            else if (changeDay.Equals("목요일"))
+            else if (dayName.Equals("목요일"))
             {
                 week = "thu";
             }
-            else if (changeDay.Equals("금요일"))
+            else if (dayName.Equals("금요일"))
             {
                 week = "fri";
             }
 
-            DataSet ds = new DataSet();
-            using (SqlConnection conn = new SqlConnection(constr))
-            {
-                conn.Open();
-                string sql = "UPDATE "+classN // 데이터 내용 바꾸고
-                    +" SET "+ week + " = '"+changeSub+"'"
-                    +" WHERE class = '"+changeTime+"';"; 
-                   
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
-                adapter.Fill(ds, classN);
-
-                 sql = "SELECT class as '시간', " + week + " as '" + changeDay + "', teacher_Table.teacherName as '선생님', subTable.classPlace as '수업장소', teacher_Table.teacherPlace as '선생님 위치'"
-                        + " From " + classN
-                        + " LEFT OUTER JOIN subTable ON " + classN + "." + week + " = subTable.subName"
-                        + " LEFT OUTER JOIN teacher_Table ON " + classN + "." + week + " = teacher_Table.subName"
-                        + ";"; // 바뀐 내용 보여주기
-                    adapter = new SqlDataAdapter(sql, conn);
-                    adapter.Fill(ds, classN);
-            }
-            dataGridView1.DataSource = ds.Tables[0];
+            return week;
         }
     }
 }
