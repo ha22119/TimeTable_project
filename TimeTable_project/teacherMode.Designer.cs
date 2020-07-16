@@ -30,6 +30,12 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.changeSub_label = new System.Windows.Forms.Label();
+            this.beforeSub_label = new System.Windows.Forms.Label();
+            this.changeTime_label = new System.Windows.Forms.Label();
+            this.changeDay_label = new System.Windows.Forms.Label();
+            this.changeClass_label = new System.Windows.Forms.Label();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
@@ -41,12 +47,6 @@
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.changeClass_label = new System.Windows.Forms.Label();
-            this.changeDay_label = new System.Windows.Forms.Label();
-            this.changeTime_label = new System.Windows.Forms.Label();
-            this.beforeSub_label = new System.Windows.Forms.Label();
-            this.changeSub_label = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +86,60 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "시간표 교체";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(50, 436);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(151, 34);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "시간표 보기";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // changeSub_label
+            // 
+            this.changeSub_label.AutoSize = true;
+            this.changeSub_label.Location = new System.Drawing.Point(132, 394);
+            this.changeSub_label.Name = "changeSub_label";
+            this.changeSub_label.Size = new System.Drawing.Size(37, 15);
+            this.changeSub_label.TabIndex = 28;
+            this.changeSub_label.Text = "야호";
+            // 
+            // beforeSub_label
+            // 
+            this.beforeSub_label.AutoSize = true;
+            this.beforeSub_label.Location = new System.Drawing.Point(132, 354);
+            this.beforeSub_label.Name = "beforeSub_label";
+            this.beforeSub_label.Size = new System.Drawing.Size(37, 15);
+            this.beforeSub_label.TabIndex = 27;
+            this.beforeSub_label.Text = "야호";
+            // 
+            // changeTime_label
+            // 
+            this.changeTime_label.AutoSize = true;
+            this.changeTime_label.Location = new System.Drawing.Point(132, 317);
+            this.changeTime_label.Name = "changeTime_label";
+            this.changeTime_label.Size = new System.Drawing.Size(37, 15);
+            this.changeTime_label.TabIndex = 26;
+            this.changeTime_label.Text = "야호";
+            // 
+            // changeDay_label
+            // 
+            this.changeDay_label.AutoSize = true;
+            this.changeDay_label.Location = new System.Drawing.Point(132, 277);
+            this.changeDay_label.Name = "changeDay_label";
+            this.changeDay_label.Size = new System.Drawing.Size(37, 15);
+            this.changeDay_label.TabIndex = 25;
+            this.changeDay_label.Text = "야호";
+            // 
+            // changeClass_label
+            // 
+            this.changeClass_label.AutoSize = true;
+            this.changeClass_label.Location = new System.Drawing.Point(132, 242);
+            this.changeClass_label.Name = "changeClass_label";
+            this.changeClass_label.Size = new System.Drawing.Size(37, 15);
+            this.changeClass_label.TabIndex = 24;
+            this.changeClass_label.Text = "야호";
             // 
             // comboBox6
             // 
@@ -236,60 +290,6 @@
             this.label4.Size = new System.Drawing.Size(37, 15);
             this.label4.TabIndex = 20;
             this.label4.Text = "요일";
-            // 
-            // changeClass_label
-            // 
-            this.changeClass_label.AutoSize = true;
-            this.changeClass_label.Location = new System.Drawing.Point(132, 242);
-            this.changeClass_label.Name = "changeClass_label";
-            this.changeClass_label.Size = new System.Drawing.Size(37, 15);
-            this.changeClass_label.TabIndex = 24;
-            this.changeClass_label.Text = "야호";
-            // 
-            // changeDay_label
-            // 
-            this.changeDay_label.AutoSize = true;
-            this.changeDay_label.Location = new System.Drawing.Point(132, 277);
-            this.changeDay_label.Name = "changeDay_label";
-            this.changeDay_label.Size = new System.Drawing.Size(37, 15);
-            this.changeDay_label.TabIndex = 25;
-            this.changeDay_label.Text = "야호";
-            // 
-            // changeTime_label
-            // 
-            this.changeTime_label.AutoSize = true;
-            this.changeTime_label.Location = new System.Drawing.Point(132, 317);
-            this.changeTime_label.Name = "changeTime_label";
-            this.changeTime_label.Size = new System.Drawing.Size(37, 15);
-            this.changeTime_label.TabIndex = 26;
-            this.changeTime_label.Text = "야호";
-            // 
-            // beforeSub_label
-            // 
-            this.beforeSub_label.AutoSize = true;
-            this.beforeSub_label.Location = new System.Drawing.Point(132, 354);
-            this.beforeSub_label.Name = "beforeSub_label";
-            this.beforeSub_label.Size = new System.Drawing.Size(37, 15);
-            this.beforeSub_label.TabIndex = 27;
-            this.beforeSub_label.Text = "야호";
-            // 
-            // changeSub_label
-            // 
-            this.changeSub_label.AutoSize = true;
-            this.changeSub_label.Location = new System.Drawing.Point(132, 394);
-            this.changeSub_label.Name = "changeSub_label";
-            this.changeSub_label.Size = new System.Drawing.Size(37, 15);
-            this.changeSub_label.TabIndex = 28;
-            this.changeSub_label.Text = "야호";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(50, 436);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 34);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "시간표 보기";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // teacherMode
             // 

@@ -82,8 +82,7 @@ namespace TimeTable_project
             using (SqlConnection conn = new SqlConnection(constr))
             {
                 conn.Open();
-                string sql = "SELECT class as '시간', " + week + " as '" + dayName + "', teacher_Table.teacherName as '선생님'," +
-                    " subTable.classPlace as '수업장소', teacher_Table.teacherPlace as '선생님 위치'"
+                string sql = "SELECT class as '시간', " + week + " as '" + dayName + "' " 
                     + " From " + classN
                     + ";";
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
