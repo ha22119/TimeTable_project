@@ -31,20 +31,28 @@ namespace TimeTable_project
 
             if (pass.Equals(rePass))
             {
-                using (SqlConnection conn = new SqlConnection(constr))
+                if ((!pass.Equals("")))
                 {
-                    conn.Open();
-                    string sql = "INSERT INTO signUpTable (teacher_name,pass)"
-                        + " VALUES('" + teacher_name + "', '" + pass + "');";
-                    SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
-                    adapter.Fill(ds, classN);
+                    using (SqlConnection conn = new SqlConnection(constr))
+                    {
+                        conn.Open();
+                        string sql = "INSERT INTO signUpTable (teacher_name,pass)"
+                            + " VALUES('" + teacher_name + "', '" + pass + "');";
+                        SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+                        adapter.Fill(ds, classN);
 
-                    MessageBox.Show(teacher_name + " 회원가입 완료");
-;                }
+                        MessageBox.Show(teacher_name + " 회원가입 완료");
+                        ;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("비밀번호를 입력해주세요");
+                }
             }
             else
             {
-                MessageBox.Show("비밀번호가 일치하지 않음");
+                MessageBox.Show("비밀번호가 일치하지 않습니다 ");
             }
             this.Close();
         }

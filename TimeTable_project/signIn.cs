@@ -33,8 +33,10 @@ namespace TimeTable_project
             using (SqlConnection conn = new SqlConnection(constr))
             {
                 conn.Open();
-                string sql = "SELECT class as '";
+                string sql = "Select teacher_name, pass From signUpTable"
+                + "where teacher_name = '"+teacherName+"' AND pass = '"+pwd+"';";
                 SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+
             }
 
             teacherMode teacherModePage = new teacherMode();
