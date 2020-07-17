@@ -64,6 +64,7 @@
             // 
             this.passTextBox.Location = new System.Drawing.Point(121, 72);
             this.passTextBox.Name = "passTextBox";
+            this.passTextBox.PasswordChar = '*';
             this.passTextBox.Size = new System.Drawing.Size(248, 25);
             this.passTextBox.TabIndex = 5;
             // 
@@ -88,7 +89,7 @@
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.passTextBox);
             this.Name = "talToi";
-            this.Text = "talToi";
+            this.Text = "탈퇴";
             this.ResumeLayout(false);
             this.PerformLayout();
 

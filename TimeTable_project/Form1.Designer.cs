@@ -204,7 +204,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.seeTimeTableButton);
             this.Name = "textGridView";
-            this.Text = "천방지죽 어리둥절 빙글빙글 돌아가는 지슴 시같표";
+            this.Text = "시간표";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

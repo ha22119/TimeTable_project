@@ -14,7 +14,6 @@ namespace TimeTable_project
 {
     public partial class textGridView : Form
     {
-        private SqlConnection sqlConn = null;
         private string constr = "SERVER =127.0.0.1,1433; DATABASE =TimeTable_DB;" + "UID =hasum; PASSWORD =hatnalsdl132";
         public textGridView()
         {

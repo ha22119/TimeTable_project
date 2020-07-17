@@ -58,7 +58,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(384, 495);
+            this.dataGridView1.Size = new System.Drawing.Size(330, 495);
             this.dataGridView1.TabIndex = 0;
             // 
             // groupBox1
@@ -80,7 +80,7 @@
             this.groupBox1.Controls.Add(this.comboBox10);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(402, 12);
+            this.groupBox1.Location = new System.Drawing.Point(348, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(390, 495);
             this.groupBox1.TabIndex = 7;
@@ -95,51 +95,47 @@
             this.button1.TabIndex = 29;
             this.button1.Text = "시간표 보기";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // changeSub_label
             // 
             this.changeSub_label.AutoSize = true;
             this.changeSub_label.Location = new System.Drawing.Point(132, 394);
             this.changeSub_label.Name = "changeSub_label";
-            this.changeSub_label.Size = new System.Drawing.Size(37, 15);
+            this.changeSub_label.Size = new System.Drawing.Size(0, 15);
             this.changeSub_label.TabIndex = 28;
-            this.changeSub_label.Text = "야호";
             // 
             // beforeSub_label
             // 
             this.beforeSub_label.AutoSize = true;
             this.beforeSub_label.Location = new System.Drawing.Point(132, 354);
             this.beforeSub_label.Name = "beforeSub_label";
-            this.beforeSub_label.Size = new System.Drawing.Size(37, 15);
+            this.beforeSub_label.Size = new System.Drawing.Size(0, 15);
             this.beforeSub_label.TabIndex = 27;
-            this.beforeSub_label.Text = "야호";
             // 
             // changeTime_label
             // 
             this.changeTime_label.AutoSize = true;
             this.changeTime_label.Location = new System.Drawing.Point(132, 317);
             this.changeTime_label.Name = "changeTime_label";
-            this.changeTime_label.Size = new System.Drawing.Size(37, 15);
+            this.changeTime_label.Size = new System.Drawing.Size(0, 15);
             this.changeTime_label.TabIndex = 26;
-            this.changeTime_label.Text = "야호";
             // 
             // changeDay_label
             // 
             this.changeDay_label.AutoSize = true;
             this.changeDay_label.Location = new System.Drawing.Point(132, 277);
             this.changeDay_label.Name = "changeDay_label";
-            this.changeDay_label.Size = new System.Drawing.Size(37, 15);
+            this.changeDay_label.Size = new System.Drawing.Size(0, 15);
             this.changeDay_label.TabIndex = 25;
-            this.changeDay_label.Text = "야호";
             // 
             // changeClass_label
             // 
             this.changeClass_label.AutoSize = true;
             this.changeClass_label.Location = new System.Drawing.Point(132, 242);
             this.changeClass_label.Name = "changeClass_label";
-            this.changeClass_label.Size = new System.Drawing.Size(37, 15);
+            this.changeClass_label.Size = new System.Drawing.Size(0, 15);
             this.changeClass_label.TabIndex = 24;
-            this.changeClass_label.Text = "야호";
             // 
             // comboBox6
             // 
@@ -295,11 +291,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 519);
+            this.ClientSize = new System.Drawing.Size(754, 519);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "teacherMode";
-            this.Text = "teacherMode";
+            this.Text = "시간표 수정하기";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
